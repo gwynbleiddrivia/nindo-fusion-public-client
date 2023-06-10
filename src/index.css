@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+	background: url("https://i.ibb.co/mvTZRJW/Nindo-Background.jpg") center fixed no-repeat;
+	font-family: 'Lusitana', serif;
+}
