@@ -5,8 +5,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Home from './pages/Home'
 import Main from './layout/Main'
+import Home from './pages/Home'
+import Instructors from './pages/Instructors'
+import Classes from './pages/Classes'
+import Dashboard from './pages/Dashboard'
+import Login from './authentication/Login'
+import Register from './authentication/Register'
 
 
 const router = createBrowserRouter([
@@ -17,13 +22,35 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Home></Home>
-	}
+	},
+	{
+		path: "/instructors",
+		element: <Instructors></Instructors>
+	},
+	{
+		path: "/classes",
+		element: <Classes></Classes>
+	},
+	{
+		path: "/dashboard",
+		element: <Dashboard></Dashboard>
+	},
+	{
+		path: "/login",
+		element: <Login></Login>
+	},
+	{
+		path: "/register",
+		element: <Register></Register>
+	},
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+  	<div className="mx-auto w-fit">
+      	<RouterProvider router={router} />
+	</div>
   </React.StrictMode>,
 )
