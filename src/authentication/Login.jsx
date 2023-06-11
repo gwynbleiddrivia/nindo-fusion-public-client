@@ -1,18 +1,25 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
+import { AuthContext } from './AuthProvider'
 
 const Login = () => {
 	let [isHide,setIsHide] = useState(false)
 	const handleHide = () =>{
 		setIsHide(!isHide)
 	}
-	
+	const {signIn} = useContext(AuthContext)
 	const handleLogin = event =>{
 		event.preventDefault()
 		const email = event.target.email.value
 		const password = event.target.password.value
 		console.log(email, password)
+
+		signIn(email, password)
+		.then(res => {
+			const user = res.user
+			console.log(user)
+		})
 	}
 
 	return (
