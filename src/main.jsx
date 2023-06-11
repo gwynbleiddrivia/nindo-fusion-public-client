@@ -49,8 +49,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  	<div className="mx-auto w-fit">
-      	<RouterProvider router={router} />
+  	<div className="mx-auto w-fit max-w-6xl">
+	      	<RouterProvider router={router} />
 	</div>
   </React.StrictMode>,
 )

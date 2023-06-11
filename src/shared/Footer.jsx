@@ -13,7 +13,7 @@ const Footer = () => {
 			    <a className="link link-hover">West Westeros</a> 
 			    <a className="link link-hover">36, North by Northwest</a> 
 			    <a className="link link-hover">221B, Baker Street</a> 
-			    <a className="link link-hover">Dunder Mifflin, Scranton, USA</a>
+			    <a className="link link-hover">Dunder Mifflin, Scranton, Enceladus</a>
 			  </div> 
 
 
