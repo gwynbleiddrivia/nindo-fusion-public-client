@@ -5,6 +5,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
+import AuthProvider from './authentication/AuthProvider'
 import Main from './layout/Main'
 import Home from './pages/Home'
 import Instructors from './pages/Instructors'
@@ -49,8 +51,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  	<div className="mx-auto w-fit max-w-6xl">
-	      	<RouterProvider router={router} />
-	</div>
-  </React.StrictMode>,
+  	<AuthProvider>
+		<div className="mx-auto w-fit max-w-6xl">
+		      	<RouterProvider router={router} />
+		</div>
+	</AuthProvider>
+    </React.StrictMode>,
 )
