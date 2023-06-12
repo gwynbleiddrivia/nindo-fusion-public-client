@@ -8,7 +8,7 @@ const Login = () => {
 	const handleHide = () =>{
 		setIsHide(!isHide)
 	}
-	const {signIn} = useContext(AuthContext)
+	const { signIn } = useContext(AuthContext)
 	const handleLogin = event =>{
 		event.preventDefault()
 		const email = event.target.email.value
@@ -37,7 +37,7 @@ const Login = () => {
 				  <label className="label">
 				    <span className="label-text text-white">Email</span>
 				  </label>
-				  <input name="email" type="email" placeholder="email" className="input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white" required/>
+				  <input name="email" type="email" placeholder="email" className="input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
 				</div>
 				<div className="form-control">
 				  <label className="label">
@@ -45,11 +45,11 @@ const Login = () => {
 				  </label>
 				  { 	isHide?
 				  <>
-				  	<input name="password" type="password" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white" required />
+				  	<input name="password" type="password" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
 				  	<button onClick={handleHide}><small className="text-amber-400">Click here to SHOW password</small></button>
 				  </>:
 				  <>
-				  <input name="password" type="text" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white" required/>
+				  <input name="password" type="text" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
 					<button onClick={handleHide}><small className="text-amber-400">Click here to HIDE password</small></button>
 				  </>
 				  }
