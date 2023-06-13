@@ -26,7 +26,7 @@ const Register = () => {
 		const email = data.email
 		const userName = data.username
 		const userPhoto = data.userphoto
-		const newUserData = {email, userName, userPhoto};
+		const newUserData = {email, userName, userPhoto, role:"Student"};
 		fetch('https://server-side-self.vercel.app/users',
 		{
 			method: 'POST',
