@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../authentication/AuthProvider'
 import useUserData from '../customHooks/useUserData'
@@ -6,9 +6,12 @@ import useUserData from '../customHooks/useUserData'
 const Header = () => {
 	const [userData] = useUserData();
 	const { user, logOut } = useContext(AuthContext)
+	const navigate = useNavigate()
 	const handleLogOut = () => {
 		logOut()
-		.then(()=>{})
+		.then(()=>{
+			navigate('/')
+		})
 		.catch(err => console.log(err))
 	}
 	return (

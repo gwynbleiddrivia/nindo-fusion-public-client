@@ -1,10 +1,14 @@
 import {useState, useContext} from 'react'
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { AuthContext } from './AuthProvider'
 import { useForm } from 'react-hook-form'
+import SocialLogin from '../shared/SocialLogin'
 
 const Login = () => {
+	const navigate = useNavigate()
+	const location = useLocation()
+	const from = location.state?.from?.pathname || "/"
 	const { signIn } = useContext(AuthContext)
 	const { register, handleSubmit, formState: { errors } } = useForm()
 	const onSubmit = data =>{
@@ -12,6 +16,7 @@ const Login = () => {
 
 		signIn(data.email, data.password)
 		.then(res => {
+			navigate(from, { replace:true })
 			const loggedUser = res.user
 			console.log(loggedUser)
 		})
@@ -62,19 +67,12 @@ const Login = () => {
 				</div>
 				<div className="form-control mt-2">
 				  <button className="btn bg-[rgb(98,81,48)] text-black hover:text-white">Login</button>
-				  <button className="mt-5 btn bg-[rgb(98,81,48)] text-black hover:text-white">
-				  <div className="flex justify-around w-full">
-				   Login from Google
-				  <FaGoogle/>
-				  
-				  </div>
-				 
-				  </button>
 				  <Link to="/register" className="font-bold mt-2 text-center">
 				  <small>Does not have an account yet? Register here</small>
 
 				  </Link>
 				</div>
+				  <SocialLogin></SocialLogin>
 			      </form>
 			    </div>
 			  </div>
