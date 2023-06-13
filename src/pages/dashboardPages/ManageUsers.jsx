@@ -1,10 +1,40 @@
 import useAllUsers from '../../customHooks/useAllUsers'
 import { FaUserTie } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa";
+import { FaPowerOff } from "react-icons/fa";
+import Swal from 'sweetalert2'
+
 
 const ManageUsers = () => {
-	const [allUsersData] = useAllUsers()
+	const [allUsersData, refetch] = useAllUsers()
 	console.log(allUsersData)
+	
+	const handleDelete = singleUser =>{
+		Swal.fire({
+		  title: 'Are you sure you want to delete this user?',
+		  showDenyButton: true,
+		  showCancelButton: true,
+		  confirmButtonText: 'Yes',
+		  denyButtonText: `No`,
+		}).then((result) => {
+		  /* Read more about isConfirmed, isDenied below */
+		  if (result.isConfirmed) {
+		    fetch(`https://server-side-self.vercel.app/users/${singleUser._id}`,{
+			method: 'DELETE'
+		    })
+		    .then(res=>res.json())
+		    .then(data=>{
+			if(data.deletedCount>0){
+				refetch();
+		    		Swal.fire('User deleted!', '', 'success')
+			}
+		    })
+		  } else if (result.isDenied) {
+		    Swal.fire('User is Not deleted!', '', 'info')
+		  }
+		})
+	}
+
 	return (
 		<div className="backdrop-blur w-full h-full p-10 text-white">
 
@@ -21,6 +51,7 @@ const ManageUsers = () => {
 					<th>Role</th>
 					<th className="text-center">Make Admin</th>
 					<th className="text-center">Make Instructor</th>
+					<th className="text-center">Delete User</th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -35,6 +66,7 @@ const ManageUsers = () => {
 								<td>{singleUser.role}</td>
 								<td className="text-center" title="Click to make this user Admin"> <button className="btn btn-ghost">  <FaUserShield/></button>  </td>
 								<td className="text-center" title="Click to make this user Instructor"> <button className="btn btn-ghost">  <FaUserTie/></button>  </td>
+								<td className="text-center" title="Click to delete this user"> <button onClick={()=>handleDelete(singleUser)} className="btn btn-ghost">  <FaPowerOff/></button>  </td>
 							      </tr>
 
 						)
