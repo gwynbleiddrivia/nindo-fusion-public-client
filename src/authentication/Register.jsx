@@ -6,7 +6,8 @@ import { AuthContext } from './AuthProvider'
 
 
 const Register = () => {
-	const { register, handleSubmit, watch, formState: { errors } } = useForm();
+	const { createUser, user } = useContext(AuthContext)
+	const { register, handleSubmit, formState: { errors } } = useForm();
         const onSubmit = data => {
 		console.log(data);
 		createUser(data.email, data.password)
@@ -35,7 +36,6 @@ const Register = () => {
 		
 	}
 	
-	const { createUser, user } = useContext(AuthContext)
 
 	let [isHide,setIsHide] = useState(false)
 	const handleHide = () =>{
@@ -43,17 +43,6 @@ const Register = () => {
 	}
 
 	
-	const handleRegister = event =>{
-		event.preventDefault()
-		const username = event.target.username.value
-		const userphoto = event.target.userphoto.value
-		const email = event.target.email.value
-		const password = event.target.password.value
-		const confirmpass = event.target.confirmpass.value
-
-		console.log(email,password)
-	}
-
 	return (
 		<div className="text-white">
 			<div className="hero backdrop-blur w-fit mx-auto my-2 rounded-xl">
@@ -91,7 +80,7 @@ const Register = () => {
 				<div className="form-control">
 				  <label className="label">
 				  </label>
-				  { 	isHide?
+				  { 	!isHide?
 				  <>
 				    <span className="my-2 label-text text-white">Password</span>
 				  	<input {...register("password", {required:true, minLength:6, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/ })} name="password" type="password" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>

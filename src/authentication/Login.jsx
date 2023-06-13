@@ -2,25 +2,26 @@ import {useState, useContext} from 'react'
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
 import { AuthContext } from './AuthProvider'
+import { useForm } from 'react-hook-form'
 
 const Login = () => {
+	const { signIn } = useContext(AuthContext)
+	const { register, handleSubmit, formState: { errors } } = useForm()
+	const onSubmit = data =>{
+		console.log(data.email, data.password)
+
+		signIn(data.email, data.password)
+		.then(res => {
+			const loggedUser = res.user
+			console.log(loggedUser)
+		})
+	}
+	
 	let [isHide,setIsHide] = useState(false)
 	const handleHide = () =>{
 		setIsHide(!isHide)
 	}
-	const { signIn } = useContext(AuthContext)
-	const handleLogin = event =>{
-		event.preventDefault()
-		const email = event.target.email.value
-		const password = event.target.password.value
-		console.log(email, password)
 
-		signIn(email, password)
-		.then(res => {
-			const user = res.user
-			console.log(user)
-		})
-	}
 
 	return (
 		<div className="text-white">
@@ -30,26 +31,29 @@ const Login = () => {
 			      <h1 className="text-5xl font-xl">Login From Here</h1>
 			    </div>
 			    <div className="card flex-shrink-0 w-full max-w-sm">
-			      <form onSubmit={handleLogin} className="card-body">
+			      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 			
 				
 				<div className="form-control">
 				  <label className="label">
 				    <span className="label-text text-white">Email</span>
 				  </label>
-				  <input name="email" type="email" placeholder="email" className="input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
+				  <input {...register('email', {required:true})} name="email" type="email" placeholder="email" className="input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
+				  {errors.email?.type == "required" &&  <span className="text-amber-400">Email is required</span>   }
 				</div>
 				<div className="form-control">
 				  <label className="label">
 				    <span className="label-text text-white">Password</span>
 				  </label>
-				  { 	isHide?
+				  { 	!isHide?
 				  <>
-				  	<input name="password" type="password" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
+				  	<input {...register("password", {required:true})} name="password" type="password" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
+				  {errors.password?.type == "required" &&  <span className="text-amber-400">Password is required</span>   }
 				  	<button onClick={handleHide}><small className="text-amber-400">Click here to SHOW password</small></button>
 				  </>:
 				  <>
-				  <input name="password" type="text" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
+				  <input {...register("password",{required:true})} name="password" type="text" placeholder="password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
+				  {errors.password?.type == "required" &&  <span className="text-amber-400">Password is required</span>   }
 					<button onClick={handleHide}><small className="text-amber-400">Click here to HIDE password</small></button>
 				  </>
 				  }

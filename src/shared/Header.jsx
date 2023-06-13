@@ -4,11 +4,8 @@ import { AuthContext } from '../authentication/AuthProvider'
 import useUserData from '../customHooks/useUserData'
 
 const Header = () => {
-	const [userData] = useUserData()
+	const [userData] = useUserData();
 	const { user, logOut } = useContext(AuthContext)
-	const username = userData[0]?.userName
-	const userphoto = userData[0]?.userPhoto
-	console.log(userphoto, "Photo hereeee")
 	const handleLogOut = () => {
 		logOut()
 		.then(()=>{})
@@ -51,7 +48,11 @@ const Header = () => {
 			{
 			user?
 			<>
+				<div className="flex flex-col lg:flex-row align-items gap-10">
+				<small className="my-auto bg-[rgb(98,81,48)] text-black rounded px-3 py-1">Logged in user email: {user.email}</small>
 				<Link className="bg-[rgb(98,81,48)] rounded px-3 py-1 text-black hover:text-white" onClick={handleLogOut}>LogOut</Link>
+
+				</div>  
 
 			</>:
 			<>
