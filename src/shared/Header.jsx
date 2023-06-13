@@ -27,7 +27,7 @@ const Header = () => {
 				{
 					user?
 					<>
-					<NavLink to="/dashboard" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Dashboard</NavLink>
+					<NavLink to="/dashboard/manageusers" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Dashboard</NavLink>
 					<img 
 					src=
 					{

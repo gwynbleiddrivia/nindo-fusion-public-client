@@ -1,9 +1,11 @@
-
+import useAllUsers from '../../customHooks/useAllUsers'
 const ManageUsers = () => {
+	const [allUsersData] = useAllUsers()
+	console.log(allUsersData)
 	return (
 		<div>
 
-			<h1>This is manage users</h1>
+			<h1>Total users: {allUsersData.length}</h1>
 		</div>
 	);
 };
