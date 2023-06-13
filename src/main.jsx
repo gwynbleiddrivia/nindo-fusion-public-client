@@ -18,9 +18,12 @@ import Main from './layout/Main'
 import Home from './pages/Home'
 import Instructors from './pages/Instructors'
 import Classes from './pages/Classes'
-import Dashboard from './pages/Dashboard'
 import Login from './authentication/Login'
 import Register from './authentication/Register'
+import Dashboard from './pages/Dashboard'
+import ManageClasses from './pages/dashboardPages/ManageClasses'
+import ManageUsers from './pages/dashboardPages/ManageUsers'
+
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -54,6 +57,20 @@ const router = createBrowserRouter([
 	},
     ]
   },
+  {
+	path: "/dashboard",
+	element: <Dashboard></Dashboard>,
+	children: [
+		{
+			path: 'manageclasses',
+			element: <ManageClasses></ManageClasses>
+		},
+		{
+			path: 'manageusers',
+			element: <ManageUsers></ManageUsers>
+		}
+	]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
