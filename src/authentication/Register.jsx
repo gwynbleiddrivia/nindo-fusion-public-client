@@ -3,6 +3,7 @@ import { FaGoogle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from './AuthProvider'
+import Swal from 'sweetalert2'
 
 
 const Register = () => {
@@ -10,6 +11,14 @@ const Register = () => {
 	const { register, handleSubmit, formState: { errors } } = useForm();
         const onSubmit = data => {
 		console.log(data);
+		if(data.password !== data.confirmpass){
+			Swal.fire(
+				  'Password and Confirm password does not match!',
+				  'Input the same password and confirm!',
+				  'warning'
+				)
+			return 0
+		}
 		createUser(data.email, data.password)
 		.then(result => {
 			console.log(result.user)
@@ -88,7 +97,7 @@ const Register = () => {
 				        {errors.password?.type === "minLength" && <span className="text-amber-400">Password must be at least 6 characters</span>}
 				        {errors.password?.type === "pattern" && <span className="text-amber-400">Password must have at least one special character and a capital letter</span>}
 
-				    <span className="my-2 label-text text-white">Confirm Password</span>
+ 				    <span className="my-2 label-text text-white">Confirm Password</span>
 				  	<input {...register("confirmpass",{required:true})} name="confirmpass" type="password" placeholder="confirm password" className="mb-3 input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white"/>
 				        {errors.confirmpass?.type == "required" && <span className="text-amber-400">You must confirm password</span>}
 
