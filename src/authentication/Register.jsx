@@ -11,11 +11,28 @@ const Register = () => {
 		console.log(data);
 		createUser(data.email, data.password)
 		.then(result => {
-			user.photoURL = data.userphoto
-			user.providerData[0].displayName = data.username
-			console.log(user.photoURL,"user printed from Rgister")
-			console.log(user.providerData[0].displayName,"user printed from Rgister")
+			console.log(result.user)
 		})
+		const email = data.email
+		const userName = data.username
+		const userPhoto = data.userphoto
+		const newUserData = {email, userName, userPhoto};
+		fetch('https://server-side-self.vercel.app/users',
+		{
+			method: 'POST',
+			headers:{
+				'content-type':'application/json'
+			},
+			body:JSON.stringify(newUserData)
+		})
+		.then(res=>res.json())
+		.then(data=>{
+			console.log(data)
+			if(data.insertedId){
+				console.log('success, data inserted')
+			}
+		})
+		
 	}
 	
 	const { createUser, user } = useContext(AuthContext)
@@ -34,19 +51,6 @@ const Register = () => {
 		const password = event.target.password.value
 		const confirmpass = event.target.confirmpass.value
 
-		const newUserData = {email, username, userphoto}
-		fetch('https://server-side-self.vercel.app/users',
-		{
-			method: 'POST',
-			headers:{
-				'content-type':'application/json'
-			},
-			body:JSON.stringify(newUserData)
-		})
-		.then(res=>res.json())
-		.then(data=>{
-			console.log(data)
-		})
 		console.log(email,password)
 	}
 

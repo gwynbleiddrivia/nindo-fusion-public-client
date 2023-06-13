@@ -1,10 +1,14 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../authentication/AuthProvider'
+import useUserData from '../customHooks/useUserData'
 
 const Header = () => {
+	const [userData] = useUserData()
 	const { user, logOut } = useContext(AuthContext)
-	console.log(user, "from Header")
+	const username = userData[0]?.userName
+	const userphoto = userData[0]?.userPhoto
+	console.log(userphoto, "Photo hereeee")
 	const handleLogOut = () => {
 		logOut()
 		.then(()=>{})
@@ -27,7 +31,16 @@ const Header = () => {
 					user?
 					<>
 					<NavLink to="/dashboard" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Dashboard</NavLink>
-					<img src="https://i.ibb.co/YRkVQM4/Nindo-default-pro-pic.jpg" className="w-10 h-10 rounded-3xl" alt=""/>
+					<img 
+					src=
+					{
+					userData[0]?.userPhoto?
+					userData[0]?.userPhoto:
+					"https://i.ibb.co/YRkVQM4/Nindo-default-pro-pic.jpg" 
+					}
+					className="w-10 h-10 rounded-3xl"
+					/>
+					
 					</>:
 					<></>
 				}
