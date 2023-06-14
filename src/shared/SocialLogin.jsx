@@ -14,7 +14,30 @@ const SocialLogin = () => {
 			const loggedGoogleUser = result.user
 			console.log(loggedGoogleUser)
 			navigate(from, {replace:true})
-		})
+		
+	        	const email = loggedGoogleUser.email
+                	const userName = loggedGoogleUser.displayName
+                	const userPhoto = loggedGoogleUser.photoURL
+                	const newUserData = {email, userName, userPhoto, role:"Student"};
+                	fetch('https://server-side-self.vercel.app/users',
+                	{
+                        	method: 'POST',
+                        	headers:{
+                                	'content-type':'application/json'
+                        	},
+                        	body:JSON.stringify(newUserData)
+                	})
+                	.then(res=>res.json())
+                	.then(data=>{
+                        	console.log(data)
+                        	if(data.insertedId){
+                                	console.log('success, data inserted')
+                                	navigate(from, { replace:true })
+                        	}
+				})
+                })                                                                                    
+
+
 	}
 	return (
 		<div>

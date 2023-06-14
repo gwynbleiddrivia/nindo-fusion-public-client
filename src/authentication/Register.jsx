@@ -1,14 +1,17 @@
 import {useState, useContext} from 'react'
 import { FaGoogle } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from './AuthProvider'
 import Swal from 'sweetalert2'
-
+import SocialLogin from '../shared/SocialLogin'
 
 const Register = () => {
 	const { createUser, user } = useContext(AuthContext)
 	const { register, handleSubmit, formState: { errors } } = useForm();
+	const navigate = useNavigate()
+        const location = useLocation()
+        const from = location.state?.from?.pathname || "/"
         const onSubmit = data => {
 		console.log(data);
 		if(data.password !== data.confirmpass){
@@ -40,6 +43,7 @@ const Register = () => {
 			console.log(data)
 			if(data.insertedId){
 				console.log('success, data inserted')
+				navigate(from, { replace:true })
 			}
 		})
 		
@@ -120,14 +124,7 @@ const Register = () => {
 				</div>
 				<div className="form-control mt-2">
 				  <button className="btn bg-[rgb(98,81,48)] text-black hover:text-white">Register</button>
-				  <button className="mt-5 btn bg-[rgb(98,81,48)] text-black hover:text-white">
-				  <div className="flex justify-around w-full">
-				   Register from Google
-				  <FaGoogle/>
-				  
-				  </div>
-				 
-				  </button>
+				  <SocialLogin></SocialLogin>
 				  <Link to="/register" className="font-bold mt-2 text-center">
 				  <small>Does not have an account yet? Register here</small>
 
