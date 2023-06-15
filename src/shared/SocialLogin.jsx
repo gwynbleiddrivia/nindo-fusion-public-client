@@ -28,12 +28,8 @@ const SocialLogin = () => {
                         	body:JSON.stringify(newUserData)
                 	})
                 	.then(res=>res.json())
-                	.then(data=>{
-                        	console.log(data)
-                        	if(data.insertedId){
-                                	console.log('success, data inserted')
+                	.then(()=>{
                                 	navigate(from, { replace:true })
-                        	}
 				})
                 })                                                                                    
 

@@ -30,7 +30,13 @@ const Header = () => {
 				{
 					user?
 					<>
-					<NavLink to="/dashboard/manageusers" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Dashboard</NavLink>
+					<NavLink to={
+					(userData[0]?.role === 'admin')?
+					"/dashboard/manageusers":
+					(userData[0]?.role === 'instructor')?
+					"/dashboard/addaclass":
+					"/dashboard/myselectedclasses"
+					} className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Dashboard</NavLink>
 					<img 
 					src=
 					{
