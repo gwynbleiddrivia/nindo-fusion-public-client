@@ -28,6 +28,7 @@ import MyClasses from './pages/dashboardPages/MyClasses'
 import MySelectedClasses from './pages/dashboardPages/MySelectedClasses'
 import MyEnrolledCLasses from './pages/dashboardPages/MyEnrolledCLasses'
 import Feedback from './pages/dashboardPages/Feedback'
+import PrivateRoute from './PrivateRoute'
 
 const queryClient = new QueryClient()
 
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
   },
   {
 	path: "/dashboard",
-	element: <Dashboard></Dashboard>,
+	element: <PrivateRoute>   <Dashboard></Dashboard> </PrivateRoute> ,
 	children: [
 		{
 			path: 'manageclasses',

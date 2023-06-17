@@ -7,7 +7,7 @@ const PopularInstructors = () => {
 	return (
 		<div>
 			<h2 className="text-5xl font-xl">Popular Instructors</h2>
-			<div className="grid grid-cols-3 gap-10">
+			<div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 				{
 					allInstructorData.map(singleIns=>{
 						return <div key={singleIns._id} className="rounded border border-black p-5">

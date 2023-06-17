@@ -23,13 +23,10 @@ const Header = () => {
 			
 			<p className="text-2xl m-auto">Nindo Fusion Camp|</p>
 
-			<div className="flex m-auto">
+			<div className="flex m-auto flex-col lg:flex-row">
 				<NavLink to="/" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Home</NavLink>
 				<NavLink to="/instructors" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Instructors</NavLink>
 				<NavLink to="/classes" className={({ isActive }) =>isActive ? "btn btn-black text-xl" : "btn btn-ghost text-xl"}>Classes</NavLink>
-				{
-					user?
-					<>
 					<NavLink to={
 					(userData[0]?.role === 'admin')?
 					"/dashboard/manageusers":
@@ -47,9 +44,6 @@ const Header = () => {
 					className="w-10 h-10 rounded-3xl"
 					/>
 					
-					</>:
-					<></>
-				}
 			</div>
 
 		</div>

@@ -8,7 +8,7 @@ const PopularClasses = () => {
 	return (
 		<div className="">
 			<h2 className="text-5xl font-xl">Popular Classes</h2>
-			<div className="grid grid-cols-3 gap-10">
+			<div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 				{
 					popClassesData.map(singleclass=>{
 						return <div key={singleclass._id} className="rounded border border-black p-5">
