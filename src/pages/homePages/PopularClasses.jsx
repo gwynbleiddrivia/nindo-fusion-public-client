@@ -6,7 +6,7 @@ const PopularClasses = () => {
 	}
 	console.log(popClassesData,"popcls")
 	return (
-		<div className="">
+		<div className="backdrop-blur w-full h-full">
 			<h2 className="text-5xl font-xl">Popular Classes</h2>
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 				{

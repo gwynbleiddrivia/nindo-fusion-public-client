@@ -125,8 +125,8 @@ const Register = () => {
 				<div className="form-control mt-2">
 				  <button className="btn bg-[rgb(98,81,48)] text-black hover:text-white">Register</button>
 				  <SocialLogin></SocialLogin>
-				  <Link to="/register" className="font-bold mt-2 text-center">
-				  <small>Does not have an account yet? Register here</small>
+				  <Link to="/login" className="font-bold mt-2 text-center">
+				  <small>Already have an account? Login Here</small>
 
 				  </Link>
 				</div>

@@ -29,6 +29,7 @@ import MySelectedClasses from './pages/dashboardPages/MySelectedClasses'
 import MyEnrolledCLasses from './pages/dashboardPages/MyEnrolledCLasses'
 import Feedback from './pages/dashboardPages/Feedback'
 import PrivateRoute from './PrivateRoute'
+import ErrorPage from './ErrorPage'
 
 const queryClient = new QueryClient()
 
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
 			element: <Feedback></Feedback>
 		},
 	]
+  },
+  {
+	path: "*",
+	element: <ErrorPage></ErrorPage>
   }
 ]);
 

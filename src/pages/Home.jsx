@@ -1,12 +1,22 @@
 import PopularInstructors from './homePages/PopularInstructors'
 import PopularClasses from './homePages/PopularClasses'
 import { Slide } from "react-awesome-reveal";
+import { useEffect } from 'react'
+import { themeChange } from 'theme-change'
 
 const Home = () => {
+	useEffect(() => {
+  	themeChange(false)
+	}, [])
 
 	return (
 		<div className="flex flex-col text-white">
-				<div className="backdrop-blur w-full flex flex-col gap-2">
+		<div className="flex">
+			<button data-act-class="shadow-outline" data-set-theme="dark" className="bg-green-700 w-fit focus:outline-none m-1 rounded p-2">Dark</button>
+			<button data-act-class="shadow-outline" data-set-theme="light" className="bg-green-700 w-fit focus:outline-none m-1 rounded p-2">Light</button>
+
+		</div>
+					<div className="backdrop-blur w-full flex flex-col gap-2">
 					<h1 className="text-7xl font-xl text-center">Welcome to Nindo Fusion Camp!</h1>
 					<h1 className="text-3xl font-sm text-center" >Learn Martial Art this summer!!!</h1>
 				</div>

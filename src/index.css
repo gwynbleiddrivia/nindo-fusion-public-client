@@ -8,4 +8,11 @@ body{
 	font-family: 'Lusitana', serif;
 	font-family: 'Girassol', cursive;
 	font-family: 'Libre Baskerville', serif;
+	background-color: var(--my-color)
+}
+[data-theme='dark'] {
+  --my-color: #000;
+}
+[data-theme='light'] {
+  --my-color: #111;
 }
