@@ -1,11 +1,11 @@
-import useAllClasses from '../customHooks/useAllClasses'
+import useApprovedClasses from '../customHooks/useApprovedClasses'
 import useUserData from '../customHooks/useUserData'
 import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 
 const Classes = () => {
-	const [AllClassesData, refetch] = useAllClasses()
+	const [appClassesData, refetch] = useApprovedClasses()
 	const [userData] = useUserData()
 	let checkSeat;
 	const checkUser = parseInt(userData.length)
@@ -36,7 +36,7 @@ const Classes = () => {
 		<h1 className="text-5xl font-xl">All Classes</h1>
 		<div className="grid grid-cols-3 gap-10">
 			{
-			AllClassesData.map(singleclass=>{
+			appClassesData.map(singleclass=>{
 				checkSeat = parseInt(singleclass.availableseats)
 				return <div key={singleclass._id} className={
 					(checkSeat !== 0)?
