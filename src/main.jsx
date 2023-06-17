@@ -23,6 +23,11 @@ import Register from './authentication/Register'
 import Dashboard from './pages/Dashboard'
 import ManageClasses from './pages/dashboardPages/ManageClasses'
 import ManageUsers from './pages/dashboardPages/ManageUsers'
+import AddAClass from './pages/dashboardPages/AddAClass'
+import MyClasses from './pages/dashboardPages/MyClasses'
+import MySelectedClasses from './pages/dashboardPages/MySelectedClasses'
+import MyEnrolledCLasses from './pages/dashboardPages/MyEnrolledCLasses'
+import Feedback from './pages/dashboardPages/Feedback'
 
 const queryClient = new QueryClient()
 
@@ -42,10 +47,6 @@ const router = createBrowserRouter([
 	{
 		path: "/classes",
 		element: <Classes></Classes>
-	},
-	{
-		path: "/dashboard",
-		element: <Dashboard></Dashboard>
 	},
 	{
 		path: "/login",
@@ -68,7 +69,27 @@ const router = createBrowserRouter([
 		{
 			path: 'manageusers',
 			element: <ManageUsers></ManageUsers>
-		}
+		},
+		{
+			path: 'addaclass',
+			element: <AddAClass></AddAClass>
+		},
+		{
+			path: 'myclasses',
+			element: <MyClasses></MyClasses>
+		},
+		{
+			path: 'myselectedclasses',
+			element: <MySelectedClasses></MySelectedClasses>
+		},
+		{
+			path: 'myenrolledclasses',
+			element: <MyEnrolledCLasses></MyEnrolledCLasses>
+		},
+		{
+			path: 'feedback/:id',
+			element: <Feedback></Feedback>
+		},
 	]
   }
 ]);

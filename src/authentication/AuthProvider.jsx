@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,   GoogleAuthProvider,  signOut } from 'firebase/auth'
 import { app } from './firebase.config'
-
+import axios from "axios"
 
 export const AuthContext = createContext(null)
 
@@ -37,6 +37,8 @@ const AuthProvider = ({children}) => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser =>{
 			setUser(currentUser)
 			console.log('current user =>', currentUser)
+			
+
 			setLoading(false)
 		})
 		return ()=>{
