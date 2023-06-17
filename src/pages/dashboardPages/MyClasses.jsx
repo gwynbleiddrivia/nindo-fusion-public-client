@@ -16,8 +16,14 @@ const MyClasses = () => {
 					<p>Available Seats:{singleclass.availableseats}</p>
 					<p>Status:{singleclass.status}</p>
 					<p>Enrolled:{singleclass.enrolled}</p>
-					<p>Feedback: {singleclass.feedback}</p>
+{
+					(singleclass.status === 'denied')?
+					<>
 
+					<p>Feedback: {singleclass.feedback}</p>
+					</>:
+					<></>
+}
 					<button className="btn btn-black">Update</button>
 				</div>
 			})
