@@ -23,6 +23,7 @@ const Classes = () => {
 				console.log(data.data[0])
 				const newSelect = data.data[0]
 				newSelect['studentId'] = userData[0]?._id
+				newSelect['classid'] = classid
 				axios.post(`https://server-side-self.vercel.app/selectclasses`,newSelect)
 				.then(res=>console.log(res))
 				.catch(err=>console.log(err))
@@ -45,6 +46,7 @@ const Classes = () => {
 					<p>{singleclass.classname}</p>
 					<img className="w-52 h-48" src={singleclass.classimage} alt=""/>
 					<p>Available Seats:{singleclass.availableseats}</p>
+					<p>Enrolled:{singleclass.enrolled}</p>
 					<p>Instructor: {singleclass.instructorname}</p>
 					<p>Price: {singleclass.price}</p>
 					{

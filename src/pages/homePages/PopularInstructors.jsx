@@ -1,10 +1,12 @@
-import useAllInstructors from '../customHooks/useAllInstructors'
-const Instructors = () => {
-	const [allInstructorData] = useAllInstructors()
-	console.log(allInstructorData)
+import useAllInstructors from '../../customHooks/useAllInstructors'
+const PopularInstructors = () => {
+	let [allInstructorData] = useAllInstructors()
+	if(allInstructorData.length > 6){
+		allInstructorData = allInstructorData.slice(0,6)
+	}
 	return (
 		<div>
-			<h2 className="text-5xl font-xl">Instructors</h2>
+			<h2 className="text-5xl font-xl">Popular Instructors</h2>
 			<div className="grid grid-cols-3 gap-10">
 				{
 					allInstructorData.map(singleIns=>{
@@ -22,4 +24,4 @@ const Instructors = () => {
 	);
 };
 
-export default Instructors;
+export default PopularInstructors;
