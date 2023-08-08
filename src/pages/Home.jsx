@@ -1,5 +1,10 @@
 import PopularInstructors from './homePages/PopularInstructors'
 import PopularClasses from './homePages/PopularClasses'
+import ExtraReviews from './homePages/ExtraReviews'
+import ExtraBlogs from './homePages/ExtraBlogs'
+import ExtraDojo from './homePages/ExtraDojo'
+import ExtraChallenges from './homePages/ExtraChallenges'
+
 import { Slide } from "react-awesome-reveal";
 import { useEffect } from 'react'
 import { themeChange } from 'theme-change'
@@ -86,7 +91,10 @@ const Home = () => {
 
 
 			</div>
-		
+		<ExtraBlogs></ExtraBlogs>
+		<ExtraChallenges></ExtraChallenges>
+		<ExtraDojo></ExtraDojo>  
+		<ExtraReviews></ExtraReviews>
 		</div>
 	);
 };

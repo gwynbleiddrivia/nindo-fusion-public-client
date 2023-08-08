@@ -71,7 +71,7 @@ const ManageClasses = () => {
 	return (
 		<div className="backdrop-blur mt-2 p-5 rounded text-white w-full h-full">
 			<h1 className="text-5xl font-xl">Manage Classes</h1>
-			<div className="grid grid-cols-3 gap-10 mt-2">
+			<div className="grid lg:grid-cols-3 grid-cols-1 gap-10 mt-2">
 				{
 					allClassesData.map(singleclass=>{
 						return <div key={singleclass._id} className="border border-black rounded-xl p-2">

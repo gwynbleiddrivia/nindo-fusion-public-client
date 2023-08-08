@@ -51,7 +51,7 @@ const AddAClass = () => {
 			    <div className="card flex-shrink-0 w-full">
 			      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 				<div className="flex flex-col gap-2 mx-auto">
-			<div className="flex gap-5">
+			<div className="flex gap-5 flex-col lg:flex-row">
 				<div className="form-control">
 				  <label className="label">
 				    <span className="label-text text-white">Class Name</span>
@@ -67,7 +67,7 @@ const AddAClass = () => {
 				</div>
 			</div>
 							
-			<div className="flex gap-5">
+			<div className="flex gap-5 lg:flex-row flex-col">
 				<div className="form-control">
 				  <label className="label">
 				    <span className="label-text text-white">Instructor Name</span>
@@ -82,7 +82,7 @@ const AddAClass = () => {
 				  <input {...register("instructoremail")} defaultValue={userEmail} name="instructoremail" type="text" placeholder="instructor email" className="input input-ghost input-bordered text-white active:bg-transparent hover:bg-transparent focus:bg-transparent fill-transparent focus:text-white border border-white" disabled/>
 				</div>
 			</div>	
-			<div className="flex gap-5">
+			<div className="flex gap-5 lg:flex-row flex-col">
 				<div className="form-control">
 				  <label className="label">
 				    <span className="label-text text-white">Available Seats</span>

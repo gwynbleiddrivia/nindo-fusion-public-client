@@ -7,7 +7,7 @@ const MyClasses = () => {
 	return (
 	<div className="backdrop-blur mt-2 p-5 rounded text-white">
 	<h1 className="text-5xl font-xl">My Classes</h1>
-		<div className="grid grid-cols-3 gap-10">
+		<div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
 			{
 			instructorClassesData.map(singleclass=>{
 				return <div key={singleclass._id} className="">

@@ -38,7 +38,7 @@ const MySelectedClasses = () => {
 	return (
 		<div className="backdrop-blur mt-2 p-5 rounded text-white">
 			<h1 className="text-5xl font-xl">My Selected classes</h1>
-			<div className="grid grid-cols-3 gap-10">
+			<div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
 			{
 			selectClassesData.map(singleclass=>{
 				return <div key={singleclass._id} className="rounded border border-black p-5">
